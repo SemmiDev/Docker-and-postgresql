@@ -1,0 +1,44 @@
+1. https://hub.docker.com/_postgres/
+2. choice the version
+3. docker pull postgres:alpine
+4. docker images
+5. docker run --name postgres-0 -e POSTGRES_PASSWORD=password -d -p 5432:5432 postgres:alpine
+6. docker ps
+7. docker exec -it postgres-0
+8. pwd
+9. psql -U postgres
+10. \du (untuk lihat role)
+11. create database test;
+12. \l (list database)
+13. \c test (gunakan db test)
+14. \d (lihat relasi)
+15. psql -h localhost -p 5432 -U postgres
+16. create database test2;
+17. use test2;
+18. create table user();
+19. create table student();
+20. \dt; (show relation)
+21. \d student (show table)
+22. \c test
+23. execute sebuah project yg pake db postgre (bkin je pke springboot)
+	
+	CREATE TABLE IF NOT EXISTS email (
+		id UUID NOT NULL PRIMARY KEY,
+		email VARCHAR(200) NOT NULL UNIQUE
+	);
+
+	CREATE TABLE IF NOT EXISTS student(
+		id UUID NOT NULL PRIMARY KEY,
+		name VARCHAR(100) NOT NULL,
+		course VARCHAR(100) NOT NULL,
+		email_id UUID REFERENCES email(id)
+	);
+24. \d+;
+25. create extension if not exists "uuid-ossp";
+26. select uuid_generate_v1();
+27. insert into student (id, name, course) value (uuid_generate_v1(), 'sammi', 'tech');
+28. select * from student;
+29. access to localhost:8080/api/v1/student
+30. \q (out)
+31. docker ps
+32. docker stop PORTS nya, misal docker stop 12932qh03
